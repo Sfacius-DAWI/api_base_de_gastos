@@ -1,0 +1,261 @@
+{
+	"info": {
+		"_postman_id": "0564d10c-b09d-4383-b07d-09f2d5f83bad",
+		"name": "php",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34184899"
+	},
+	"item": [
+		{
+			"name": "http://localhost/bases_de_datos/api.php",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n    \"name\":\"teresa\",\r\n    \"email\":\"teresa@example.com\"\r\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/bases_de_datos/api.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"bases_de_datos",
+						"api.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Analiza la respuesta del body en formato JSON\r",
+							"let response = pm.response.json();\r",
+							"\r",
+							"// Accede al valor \"token\" en la respuesta\r",
+							"let token = response.token;\r",
+							"// Guarda el valor del token en una variable de la colección\r",
+							"pm.collectionVariables.set(\"token\", token);\r",
+							"\r",
+							"// También puedes agregar un mensaje en consola para confirmar la operación\r",
+							"console.log(\"Token guardado como variable de colección: token\");"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"test@gmail.com\",\r\n    \"password\": \"12345678\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/api/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "añadir gasto",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0L2FwaS9sb2dpbiIsImlhdCI6MTc0MDE1NzAzMCwiZXhwIjoxNzQwMTYwNjMwLCJuYmYiOjE3NDAxNTcwMzAsImp0aSI6IkdvbFBsVWdrdFVQSnBHSzgiLCJzdWIiOiIzIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.rgPIr2u0W9tJPnCAQhDqhs3cnJ0hXWIEsr_CHFNkvrw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"amount\": 150.50,\r\n  \"category\": \"comestibles\",\r\n  \"description\": \"Compra de alimentos\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/api/expenses",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"expenses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ver todos los gastos",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0L2FwaS9sb2dpbiIsImlhdCI6MTc0MDE1NzAzMCwiZXhwIjoxNzQwMTYwNjMwLCJuYmYiOjE3NDAxNTcwMzAsImp0aSI6IkdvbFBsVWdrdFVQSnBHSzgiLCJzdWIiOiIzIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.rgPIr2u0W9tJPnCAQhDqhs3cnJ0hXWIEsr_CHFNkvrw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost/api/expenses",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"expenses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "modificar un gasto ",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0L2FwaS9sb2dpbiIsImlhdCI6MTc0MDE1NzAzMCwiZXhwIjoxNzQwMTYwNjMwLCJuYmYiOjE3NDAxNTcwMzAsImp0aSI6IkdvbFBsVWdrdFVQSnBHSzgiLCJzdWIiOiIzIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.rgPIr2u0W9tJPnCAQhDqhs3cnJ0hXWIEsr_CHFNkvrw",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"amount\": 200.00,\r\n  \"category\": \"comestibles\",\r\n  \"description\": \"Compra de alimentos actualizada\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/api/expenses/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"expenses",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "eliminar un gasto ",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0L2FwaS9sb2dpbiIsImlhdCI6MTc0MDE1NzAzMCwiZXhwIjoxNzQwMTYwNjMwLCJuYmYiOjE3NDAxNTcwMzAsImp0aSI6IkdvbFBsVWdrdFVQSnBHSzgiLCJzdWIiOiIzIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.rgPIr2u0W9tJPnCAQhDqhs3cnJ0hXWIEsr_CHFNkvrw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost/api/expenses/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"expenses",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"test\",\r\n    \"email\": \"test@gmail.com\",\r\n    \"password\": \"12345678\",\r\n    \"password_confirmation\": \"12345678\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/api/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

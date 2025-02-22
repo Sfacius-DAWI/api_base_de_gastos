@@ -9,19 +9,23 @@ Este proyecto Laravel permite gestionar los gastos de los usuarios. Se incluyen 
 - Base de datos (por ejemplo, SQLite configurada en el archivo `.env`).
 - Node.js (para la compilación de assets).
 
+o 
+
+- usar el comando ./vendor/bin/sail para ejecutar todos los comandos
+
 ## Instalación
 1. Clona el repositorio y accede al directorio del proyecto:
    ```sh
-   git clone <URL_DEL_REPOSITORIO>
+   git clone <URL_DEL_REPOSITORIO> esta doc esta hecha en mi repo no se como la veras al entregar la tarea
    cd nombre-del-proyecto
    ```
 2. Instala las dependencias de PHP:
    ```sh
-   composer install
+   composer install o ./vendor/bin/sail composer install
    ```
 3. Copia el archivo de ejemplo de variables de entorno:
    ```sh
-   cp .env.example .env
+   cp .env.example .env o simplemente borra el .example 
    ```
 4. Genera la llave de la aplicación:
    ```sh
@@ -33,13 +37,15 @@ Este proyecto Laravel permite gestionar los gastos de los usuarios. Se incluyen 
    ```
 6. Ejecuta las migraciones:
    ```sh
-   php artisan migrate
+   php artisan migrate o ./vendor/bin/sail php artisan migrate
    ```
 7. Instala y compila los assets:
    ```sh
    npm install
+   composer up -d o ./vendor/bin/sail up -d 
    npm run dev
    ```
+8.  Nota todos los comandos se pueden ejecutar con ./vendor/bin/sail 
 
 ## Estructura del Proyecto
 
@@ -91,10 +97,9 @@ vendor/bin/phpunit
 
 **Cómo hacer la petición:**
 - **Método:** POST
-- **URL:** `http://<tu-dominio-o-ip>/api/register`
+- **URL:** `http://localhost/api/register`
 - **Headers:**
   - Content-Type: application/json
-  - (Opcional) Accept: application/json
 - **Body (JSON):**
   ```json
   {
@@ -113,10 +118,9 @@ vendor/bin/phpunit
 
 **Cómo hacer la petición:**
 - **Método:** POST
-- **URL:** `http://<tu-dominio-o-ip>/api/login`
+- **URL:** `http://localhost/api/login`
 - **Headers:**
   - Content-Type: application/json
-  - Accept: application/json
 - **Body (JSON):**
   ```json
   {
@@ -133,10 +137,9 @@ vendor/bin/phpunit
 
 **Cómo hacer la petición:**
 - **Método:** GET
-- **URL:** `http://<tu-dominio-o-ip>/api/expenses`
+- **URL:** `http://localhost/api/expenses`
 - **Headers:**
   - Authorization: Bearer `<tu-token>`
-  - Accept: application/json
 - **Opcional:** Se pueden enviar parámetros de consulta, por ejemplo:
   ```sh
   http://<tu-dominio-o-ip>/api/expenses?category=Comestibles
@@ -150,11 +153,10 @@ vendor/bin/phpunit
 
 **Cómo hacer la petición:**
 - **Método:** POST
-- **URL:** `http://<tu-dominio-o-ip>/api/expenses`
+- **URL:** `http://localhost/api/expenses`
 - **Headers:**
   - Content-Type: application/json
   - Authorization: Bearer `<tu-token>`
-  - Accept: application/json
 - **Body (JSON):**
   ```json
   {
@@ -172,11 +174,10 @@ vendor/bin/phpunit
 
 **Cómo hacer la petición:**
 - **Método:** PUT o PATCH
-- **URL:** `http://<tu-dominio-o-ip>/api/expenses/{id}`
+- **URL:** `http://localhost/api/expenses/{id}`
 - **Headers:**
   - Content-Type: application/json
   - Authorization: Bearer `<tu-token>`
-  - Accept: application/json
 - **Body (JSON):**
   ```json
   {
@@ -194,10 +195,9 @@ vendor/bin/phpunit
 
 **Cómo hacer la petición:**
 - **Método:** DELETE
-- **URL:** `http://<tu-dominio-o-ip>/api/expenses/{id}`
+- **URL:** `http://localhost/api/expenses/{id}`
 - **Headers:**
   - Authorization: Bearer `<tu-token>`
-  - Accept: application/json
 
 **Lo que sucede:** El servidor verifica el token y elimina el gasto.
 
@@ -215,15 +215,14 @@ Authorization: Bearer <tu-token>
 Asegúrate de configurar las peticiones con:
 ```sh
 Content-Type: application/json
-Accept: application/json
 ```
 
 ### URLs y Entornos
-La URL base (`http://localhost` o `http://tudominio.com`) cambiará según el entorno (local o producción).
+La URL base (`http://localhost` o la que aparezca la ejecutar `npm run dev`).
 
-## Contribución
-Si deseas contribuir, revisa la política de contribución del proyecto y sigue las mejores prácticas de Laravel.
+## ADJUNTO PAQUETE DE PRUEBAS DE POSTMAN EN EL REPO
 
+chirper/API_base_de_gastos_Santi.json descargar y importar directamente en post-man estan preparadas para funcionar 
 ---
 
 Puedes adaptar este README según tus necesidades. 🚀
