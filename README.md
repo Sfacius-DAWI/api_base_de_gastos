@@ -225,4 +225,3 @@ La URL base (`http://localhost` o la que aparezca la ejecutar `npm run dev`).
 chirper/API_base_de_gastos_Santi.json descargar y importar directamente en post-man estan preparadas para funcionar 
 ---
 
-Puedes adaptar este README según tus necesidades. 🚀
