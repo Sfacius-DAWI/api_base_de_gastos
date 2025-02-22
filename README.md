@@ -142,7 +142,7 @@ vendor/bin/phpunit
   - Authorization: Bearer `<tu-token>`
 - **Opcional:** Se pueden enviar parámetros de consulta, por ejemplo:
   ```sh
-  http://<tu-dominio-o-ip>/api/expenses?category=Comestibles
+  http://localhost/api/expenses?category=Comestibles
   ```
 **Lo que sucede:** El servidor verifica el token JWT y devuelve los gastos del usuario.
 
